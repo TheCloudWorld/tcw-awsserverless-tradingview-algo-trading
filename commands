@@ -1,0 +1,14 @@
+docker run --platform linux/amd64 -it \
+-v ~/kite-layer:/app \
+python:3.14-slim \
+bash
+apt update
+apt install -y build-essential python3-dev zip
+cd /app
+mkdir python
+pip install --upgrade pip
+pip install kiteconnect -t python/
+zip -r kite_layer.zip python
+pip3 install requests -t python/
+pip3 install cryptography -t python/
+exit
